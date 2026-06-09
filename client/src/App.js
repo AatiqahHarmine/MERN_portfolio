@@ -19,7 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Landing />} />

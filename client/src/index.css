@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #0a0808;
+  --bg-office: #0f0c0a;
+  --paper-yellow: #e8d5a3;
+  --paper-dark: #c4a96b;
+  --red-string: #c0392b;
+  --amber: #d4890a;
+  --amber-light: #f0a500;
+  --green-stamp: #2d6a4f;
+  --text-primary: #e8d5a3;
+  --text-muted: #8a7a5a;
+  --border-worn: #4a3f2f;
+  --shadow-deep: rgba(0, 0, 0, 0.8);
+  --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+  --font-detective: 'Special Elite', cursive;
+  --font-clean: 'Oswald', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-typewriter);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0808; }
+::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 3px; }
+
+/* Utility classes */
+.paper-texture {
+  background-color: var(--paper-yellow);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0,0,0,0.05) 25px),
+    repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0,0,0,0.02) 25px);
+  color: #2a1f0f;
+}
+
+.worn-paper {
+  background: linear-gradient(135deg, #d4b483 0%, #c4a067 30%, #d4b483 60%, #bfa060 100%);
+  position: relative;
+}
+
+.worn-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.stamp-closed {
+  display: inline-block;
+  border: 3px solid var(--green-stamp);
+  color: var(--green-stamp);
+  padding: 4px 12px;
+  font-family: var(--font-detective);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  transform: rotate(-8deg);
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.stamp-ongoing {
+  display: inline-block;
+  border: 3px solid var(--red-string);
+  color: var(--red-string);
+  padding: 4px 12px;
+  font-family: var(--font-detective);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  transform: rotate(-5deg);
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.typewriter-text {
+  font-family: var(--font-typewriter);
+  letter-spacing: 1px;
+}
+
+.detective-heading {
+  font-family: var(--font-detective);
+  color: var(--amber-light);
+  text-shadow: 0 0 20px rgba(212, 137, 10, 0.4);
+}
+
+.btn-primary {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--amber);
+  color: var(--amber);
+  font-family: var(--font-detective);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  padding: 12px 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--amber);
+  color: var(--bg-dark);
+  box-shadow: 0 0 20px rgba(212, 137, 10, 0.5);
+  transform: translateY(-2px);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-worn);
+  margin: 2rem 0;
+  opacity: 0.5;
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Glow effects */
+.glow-amber {
+  box-shadow: 0 0 15px rgba(212, 137, 10, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(192, 57, 43, 0.3);
+}
+
+/* Loading state */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-worn);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%, 98% { opacity: 0.7; }
+  97%, 99% { opacity: 0.9; }
+}
+
+@keyframes typeIt {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes rainDrop {
+  0% { transform: translateY(-100px) translateX(0); opacity: 1; }
+  100% { transform: translateY(100vh) translateX(-30px); opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

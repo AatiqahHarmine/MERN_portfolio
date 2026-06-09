@@ -1,0 +1,17 @@
+{
+  "name": "detective-portfolio",
+  "version": "1.0.0",
+  "description": "Detective-themed MERN portfolio — Case File #2026",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": ["portfolio", "detective", "mern", "react"],
+  "author": "Aatiqah Harmin"
+}
